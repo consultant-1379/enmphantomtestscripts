@@ -1,0 +1,36 @@
+  149  [24-03-23 20:49:17] yum install scap-security-guide
+  238  [28-03-23 22:54:22] yum install openscap-utils bzip2
+  388  [31-03-23 13:19:28] yum install scap-workbench 
+ 152  [24-03-23 20:51:04] oscap info /usr/share/xml/scap/ssg/content/ssg-rhel7-ds.xml
+  153  [24-03-23 20:53:50] oscap xccdf eval --profile xccdf_org.ssgproject.content_profile_cis_server_l1 --results-arf arf.xml --report full_report_${HOSTNAME}_23.06_before.html --oval-results /usr/share/xml/scap/ssg/content/ssg-rhel7-ds.xml
+  202  [27-03-23 14:27:01] history | grep oscap
+  203  [27-03-23 14:30:40] oscap xccdf eval --profile xccdf_org.ssgproject.content_profile_cis_server_l1 --fetch-remote-resources --rule xccdf_org.ssgproject.content_rule_sshd_use_approved_ciphers  --results-arf arf.xml --report ciphers_report_before_${HOSTNAME}.html --oval-results /usr/share/xml/scap/ssg/content/ssg-rhel7-ds.xml
+  205  [27-03-23 14:31:43] oscap xccdf eval --remediate --profile xccdf_org.ssgproject.content_profile_cis_server_l1 --fetch-remote-resources --rule xccdf_org.ssgproject.content_rule_sshd_use_approved_ciphers  --results-arf arf.xml --report ciphers_report_before_${HOSTNAME}.html --oval-results /usr/share/xml/scap/ssg/content/ssg-rhel7-ds.xml
+  207  [27-03-23 14:36:17] oscap xccdf eval --profile xccdf_org.ssgproject.content_profile_cis_server_l1 --fetch-remote-resources --rule xccdf_org.ssgproject.content_rule_sshd_use_approved_macs  --results-arf arf.xml --report ciphers_report_before_${HOSTNAME}.html --oval-results /usr/share/xml/scap/ssg/content/ssg-rhel7-ds.xml
+  209  [27-03-23 14:37:18] oscap xccdf eval --remediate --profile xccdf_org.ssgproject.content_profile_cis_server_l1 --fetch-remote-resources --rule xccdf_org.ssgproject.content_rule_sshd_use_approved_macs  --results-arf arf.xml --report ciphers_report_before_${HOSTNAME}.html --oval-results /usr/share/xml/scap/ssg/content/ssg-rhel7-ds.xml
+  237  [28-03-23 18:29:23] oscap cve find CVE-2022-32532 nvd-feed.xml
+  240  [28-03-23 22:55:07] oscap-ssh joesec@machine1 22 oval eval --report remote-vulnerability.html rhel-7.oval.xml
+  241  [28-03-23 22:56:13] oscap-ssh litp-admin@svc-1 22 oval eval --report remote-vulnerability.html rhel-7.oval.xml
+  265  [29-03-23 10:27:40] oscap xccdf eval --remediate --profile xccdf_org.ssgproject.content_profile_cis_server_l1 --fetch-remote-resources --rule Rule IDxccdf_org.ssgproject.content_rule_banner_etc_motd  --results-arf arf.xml --report motd_report_before_${HOSTNAME}.html --oval-results /usr/share/xml/scap/ssg/content/ssg-rhel7-ds.xml
+  266  [29-03-23 10:27:58] oscap xccdf eval --remediate --profile xccdf_org.ssgproject.content_profile_cis_server_l1 --fetch-remote-resources --rule Rule xccdf_org.ssgproject.content_rule_banner_etc_motd  --results-arf arf.xml --report motd_report_before_${HOSTNAME}.html --oval-results /usr/share/xml/scap/ssg/content/ssg-rhel7-ds.xml
+  267  [29-03-23 10:28:21] oscap xccdf eval --remediate --profile xccdf_org.ssgproject.content_profile_cis_server_l1 --fetch-remote-resources --rule xccdf_org.ssgproject.content_rule_banner_etc_motd  --results-arf arf.xml --report motd_report_before_${HOSTNAME}.html --oval-results /usr/share/xml/scap/ssg/content/ssg-rhel7-ds.xml
+  269  [29-03-23 10:30:13] oscap xccdf eval --remediate --profile xccdf_org.ssgproject.content_profile_cis_server_l1 --fetch-remote-resources --rule xccdf_org.ssgproject.content_rule_banner_etc_issue  --results-arf arf.xml --report issue_report_before_${HOSTNAME}.html --oval-results /usr/share/xml/scap/ssg/content/ssg-rhel7-ds.xml
+  270  [29-03-23 10:33:37] oscap xccdf eval --remediate --profile xccdf_org.ssgproject.content_profile_cis_server_l1 --fetch-remote-resources --rule xccdf_org.ssgproject.content_rule_accounts_password_pam_minclass  --results-arf arf.xml --report pwquality_report_before_${HOSTNAME}.html --oval-results /usr/share/xml/scap/ssg/content/ssg-rhel7-ds.xml
+  271  [29-03-23 10:34:34] oscap xccdf eval --remediate --profile xccdf_org.ssgproject.content_profile_cis_server_l1 --fetch-remote-resources --rule xccdf_org.ssgproject.content_rule_accounts_password_pam_minlen  --results-arf arf.xml --report pwquality_report_before_${HOSTNAME}.html --oval-results /usr/share/xml/scap/ssg/content/ssg-rhel7-ds.xml
+
+
+
+
+
+hardening
+/sbin/grub2-setpassword on lms -- does ombs use single user mode?
+Set the Bash TMOUT Variable
+Change Linux umask Settings
+
+In RHEL 7, PAM (Pluggable Authentication Modules) is used as the primary authentication mechanism and provides many of the features that were previously provided by the shadow-utils package.
+
+Some of the features of shadow-utils that are replaced by PAM in RHEL 7 include:
+
+Password aging and complexity rules: In previous versions of RHEL, the chage command provided a way to enforce password aging and complexity rules. In RHEL 7, these rules are configured in the PAM configuration files, allowing for more flexible and fine-grained control.
+
+Password hashing algorithms: The pwconv and pwunconv commands, which were used to convert between different password hashing algorithms, are no longer needed in RHEL 7. PAM provides support for various password hashing algorithms, and the system administrator can configure the desired algorithm in the PAM configuration files.

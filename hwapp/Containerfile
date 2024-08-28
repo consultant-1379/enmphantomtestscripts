@@ -1,0 +1,54 @@
+FROM registry.access.redhat.com/ubi8/ubi
+WORKDIR /app
+# not supported "invalid mount type "bind""  RUN --mount=type=bind,source=/media/iso,destination=/mnt
+# RUN yum repolist -v
+# RUN yum clean all
+# RUN yum makecache
+COPY ./defaults/base.repo /etc/yum.repos.d/
+COPY ./defaults/appstream.repo /etc/yum.repos.d/
+RUN yum repolist -v
+RUN yum install -y wget gcc make python3-devel python3-setuptools
+RUN yum install -y libffi-devel zlib-devel zlib openssl-devel openssl bzip2-devel iputils openssh-clients
+RUN wget https://dl.dell.com/downloads/XY9D7_Navisphere-CLI-7.33.21.3.22-for-Linux-x64.rpm \
+    && wget -O python-ilorest-library-master.zip https://github.com/HewlettPackard/python-ilorest-library/archive/refs/heads/master.zip
+    # python-ilorest-library:  is replaced by python-ilorest-library-master.zip
+RUN yum install -y ./XY9D7_Navisphere-CLI-7.33.21.3.22-for-Linux-x64.rpm
+RUN export ALT_PYTHON=/usr/local/bin/python3
+RUN mkdir -p $HARDWARE_HOME/python
+ARG UID
+RUN useradd -u ${UID} eeidle -d /home/eeidle
+#USER ${UID}
+RUN wget https://www.python.org/ftp/python/3.11.3/Python-3.11.3.tgz \
+ && tar -xzf Python-3.11.3.tgz \
+ && cd Python-3.11.3 \
+ && ./configure --enable-optimizations --with-ssl-default-suites=python \
+ && make altinstall \
+ && cd
+# && ln -s /usr/local/bin/python3.11 /usr/bin/python3 \
+
+#RUN yum install -y openssl openssl-devel iputils
+# RUN python3.11 -c "import ssl; print(ssl.OPENSSL_VERSION)"
+#USER ${UID}
+# RUN pwd
+# RUN cd /home/eeidle
+RUN python3.11 -m pip install --upgrade pip
+# RUN python3.11 -m pip install  jsonpath-rw
+# COPY ./requirements.txt /app
+# RUN which python3 && python3 -V && ls -lart /usr/bin/python3  && ls -lart /usr/local/bin/pytho* && python3.11 -V
+# RUN python3.11 -m pip install -r /app/requirements.txt
+RUN python3.11 -m pip install  beautifulsoup4 requests lxml paramiko attrs wheel cryptography  cryptography   tornado Jinja2 setuptools pytest pandas executor Flask jsonpath-rw  redfish python-redfish redfish-client
+RUN python3.11 -m pip install -v  python-ilorest-library-master.zip openpyxl pygments
+RUN ln -s /usr/local/bin/python3.11 /usr/bin/python
+# RUN which python3
+EXPOSE 5000
+COPY hwapp /app
+#RUN mkdir /app/logs
+#CMD ["/app/saninfo.py"]
+
+#eeidle@E-5CG2193BRF:/mnt/c/repos/enmphantomtestscripts/hardware_management$ sudo podman build  -f Df --volume=/media/iso:/media/iso:ro -t  first_python311_ubi2 .
+#sudo podman run -dit -d --volume $PWD:/app 83046 /bin/bash
+#eeidle@E-5CG2193BRF:/mnt/c/repos/enmphantomtestscripts/hardware_management$ podman run -dit -d --volume $PWD:/app localhost/first_python311_ubi2:latest /bin/bash
+#9ad2076d3d6df2cd4ab01820bcfad93bff9e2b98822f273fff40aaa94b1bce1b
+#eeidle@E-5CG2193BRF:/mnt/c/repos/enmphantomtestscripts/hardware_management$ podman exec -it 9ad2 /bin/bash
+#podman run -td -v $HOME:$HOME  -w $HOME -e USER=$USER -e UID=1000 -e GID=1000 -e HOME=$HOME -e WORKSPACE=$HOME/workspace -e XID=$USER registry.access.redhat.com/ubi8/ubi:8.7-1112 /bin/bash
+# sudo podman run --cap-add=NET_RAW -dit --volume $PWD:/app --network=host -p 5000:5000 localhost/python311_ubi:ssl /bin/bash

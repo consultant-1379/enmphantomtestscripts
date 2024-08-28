@@ -1,0 +1,31 @@
+{# templates/output.html #}
+{% extends "base.html" %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<!--    <script>-->
+<!--    var source = new EventSource("/Unity 450F");-->
+<!--    source.onmessage = function(event) {-->
+<!--        document.getElementById("output").innerHTML += event.data + " <br/>"-->
+<!--    }-->
+<!--    </script>-->
+</head>
+<body>
+    <header>
+    </header>
+    <h1>Output</h1>
+    <div id="output"></div>
+
+{% block content %}
+
+{{ output }}
+    {% for content in console_gave %}
+	    <p> {{content|trim}} </p>
+    {% endfor %}
+{% endblock content %}
+
+
+</body>
+</html>
+

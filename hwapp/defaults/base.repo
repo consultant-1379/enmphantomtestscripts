@@ -1,0 +1,20 @@
+#
+# Certificate-Based Repositories
+# Managed by (rhsm) subscription-manager
+#
+# *** This file is auto-generatedChanges made here will be over-written. ***
+# *** Use "subscription-manager repo-override --help" if you wish to make changes. ***
+#
+# If this file is empty and this system is subscribed consider
+# a "yum repolist" to refresh available repos
+#
+
+[BaseOS]
+name=BaseOS
+baseurl=file:///media/iso/BaseOS/
+enabled=1
+#baseurl=http://mirror.centos.org/centos/8.4.2105/BaseOS/x86_64/os/
+gpgcheck=0
+
+
+

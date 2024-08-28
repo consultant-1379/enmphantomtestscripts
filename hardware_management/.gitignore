@@ -1,0 +1,9 @@
+# created by virtualenv automatically
+share/
+Lib/
+Scripts/
+etc/
+__pycache__
+.idea/
+*.log
+/data/desktop.ini

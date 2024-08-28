@@ -1,0 +1,40 @@
+{
+  "ENMs": [
+    {
+      "ID": "570",
+      "root": "root",
+      "root_password": "12shroot",
+      "litp-admin_password": "12shroot",
+      "installation_dir": "/root/.neo",
+      "config_details": {
+        "ENM_type": "LITP",
+        "ms": "ieatlms4618.athtem.eei.ericsson.se",
+        "java_version": "",
+        "os_version": "",
+        "enm_version": "",
+        "litp_version": "",
+        "deployment_description": "",
+        "ip_versions": "",
+        "DDC_configured": ""
+      }
+    },
+    {
+      "ID": "596",
+      "root": "root",
+      "root_password": "12shroot",
+      "litp-admin_password": "12shroot",
+      "installation_dir": "/root/.neo",
+      "config_details": {
+          "ENM_type": "LITP",
+          "ms": "ieatlms7480.athtem.eei.ericsson.se",
+          "java_version": "",
+          "os_version": "",
+          "enm_version": "",
+          "litp_version": "",
+          "deployment_description": "",
+          "ip_versions": "",
+          "DDC_configured": ""
+        }
+    }
+  ]
+}

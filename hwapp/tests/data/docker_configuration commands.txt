@@ -1,0 +1,32 @@
+FROM centos/python-27-centos7
+
+RUN yum install python
+docker network create dec-net
+docker run -t -i -v c:\test_data:/data --name centos_h3 --network dec-net   -d  centos/python-27-centos7 /bin/bash
+docker exec -i -t 63e /bin/bash
+docker start -ai centos_h3
+
+
+docker create -t  -v c:\test_data:/data --name centos_h1 --network dec-net --publish 8080:80   centos/python-27-centos7 -a /bin/bash
+docker create -v c:\test_data:/data --name centos_h1 --network dec-net --publish 8080:80  centos/python-27-centos7 /bin/bash
+
+docker create --name centos_h2 --network dec-net --publish 8443:443  centos/python-27-centos7
+docker exec -i -t 8b8e6d4dc8b1 /bin/bash
+docker run -t -i  centos/python-27-centos7 /bin/bash
+docker run -v c:\test_data:/data -t -i centos/python-27-centos7 /bin/bash
+docker run -v c:\test_data:/data --name centos_h1 -t -i centos/python-27-centos7 /bin/bash
+
+docker run -t -i -P --name centos_h1 -v C:\Users\eeidle\OneDrive - Ericsson AB\ENM Test\ENM20_projects\tests\unit\:\data
+-
+d
+-
+P
+--
+name web
+-
+v /ex/data:/data training/
+webapp
+python app.py
+
+
+ Where is the goto place for ENM design rules and guidelines

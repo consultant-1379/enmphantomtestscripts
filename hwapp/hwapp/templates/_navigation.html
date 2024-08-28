@@ -1,0 +1,10 @@
+{# templates/_navigation.html #}
+
+<nav>
+<div class="topnav">
+{% for menu_item in ["home", "toolshome", "results","unity","unity2","vnx","content","stest"] %}
+    {{ macros.nav_link(menu_item) }}
+{% endfor %}
+  <a href="#" style="float:right">Link</a>
+</div>
+</nav>

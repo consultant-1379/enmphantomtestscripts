@@ -1,0 +1,9 @@
+{# templates/my_stream_template.html #}
+
+{% extends "base.html" %}
+{% block content %}
+
+{% for item in rows %}
+{{ item }}<br>
+{% endfor %}
+{% endblock content %}

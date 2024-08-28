@@ -1,0 +1,18 @@
+{# templates/results.html #}
+
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ test_name }} {{ title }}</h1>
+<ul>
+{% for ENM in ENMS|sort(attribute="name")
+    |sort(attribute="score", reverse=true) %}
+  <li>
+      {{ macros.add_badge(ENM, ENMs) }}
+      {% if ENM.score > 80 %}{% else %}{% endif %}
+    <em>{{ ENM.name }}:</em> {{ ENM.score }}/{{ max_score }}
+  </li>
+{% endfor %}
+</ul>
+{{ output }}
+{% endblock content %}

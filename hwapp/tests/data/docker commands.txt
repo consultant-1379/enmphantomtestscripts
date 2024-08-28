@@ -1,0 +1,77 @@
+docker rm $(docker ps --filter status=exited -q)
+docker run -it --rm --name enm20_projects-getlmsi -v "$(pwd)/src/:/usr/src/app/src" -w /usr/src/app/src enm20_projects-getlmsi sh
+eeidle@E-5CG2193BRF:/mnt/c/Users/EEIDLE/OneDrive - Ericsson/ENM Test/ENM20_projects$ docker run -dit -v "$(pwd)/:/usr/src/app/" -w /usr/src/app/src webs sh
+docker run -it -v "$(pwd)/:/usr/src/app/" -w /usr/src/app/src enm20_projects-web sh
+docker build -t="mywebserver" .
+docker run -it -d -p 8080:80 -v "$(pwd)/:/usr/src/app/" -w /usr/src/app/src mywebserver sh
+root@E-5CG2193BRF:/mnt/c/Users/EEIDLE/OneDrive - Ericsson/ENM Test/ENM20_projects# docker run -dit --name my-apache-app -p 8080:80 -v "$(pwd)/src:/usr/local/apache2/htdocs/" httpd:2.4
+docker run -dit -p 8080:80 -v "$(pwd)/:/usr/src/myapp/" -w /usr/src/myapp/src webs sh
+docker start -ai nostalgic_northcutt & && httpd
+httpd apache2
+/var/www/localhost/cgi-bin
+DocumentRoot "/var/www/localhost/htdocs"
+PS C:\Users\EEIDLE\OneDrive - Ericsson\ENM Test\ENM20_projects\src> Get-Content .\log21.log -Wait -Tail 10
+docker run -it -v "$(pwd)/:/usr/src/app/" -w /usr/src/app/src enm20_projects-getlmsi sh
+docker run -it -v "$(pwd)/:/usr/src/app/" -w /usr/src/app/src enm20_projects-getlmsi sh
+docker start -ai nostalgic_northcutt && httpd
+docker exec -it 9df4 /bin/bash 
+
+centos 7 
+wget https://www.python.org/ftp/python/3.9.16/Python-3.9.16.tgz
+tar -xzf Python-3.9.16.tgz
+ls
+cd Python-3.11.2
+./configure --enable-optimizations
+make altinstall
+  
+  
+  wget https://www.python.org/ftp/python/3.11.2/Python-3.11.2.tgz
+tar -xzf Python-3.11.2.tgz
+ls
+cd Python-3.11.2
+./configure --enable-optimizations
+make altinstall
+  
+  
+  docker run -dit -v "$(pwd)/:/usr/src/app/" -w /usr/src/app/src mywebs sh
+  
+  
+  
+  
+  
+  
+  
+ ltec terminal server
+\\ieatfs01.rnd.ericsson.se\Home\eeidle\Downloads\python-3.11.2-embed-amd64 
+
+
+docker build -t centos7_apache:1.0 -f Dockerfile .
+#docker run -d -p 5000:80 --name my_apache -v /path/to/httpd/conf:/etc/httpd/conf/httpd.conf centos7_apache:1.0 
+
+dos2unix c2.py
+/etc/httpd/conf/httpd.conf
+LoadModule cgi_module modules/mod_cgi.so
+  #LoadModule python_module modules/mod_python.so
+      #ScriptAlias /cgi-bin/ "/var/www/cgi-bin/"
+      #ScriptAlias /hello /var/www/cgi-bin/c2.py
+      #ScriptAlias /test /var/www/cgi-bin/c2.py
+      #ScriptAlias /enmcgi /var/www/cgi-bin/enmcgi.py
+      ScriptAlias /cgi-bin/ "/usr/src/myapp/src/src/cgi-bin/"
+      ScriptAlias /hello "/usr/src/myapp/src/src/cgi-bin/c2.py"
+     # ScriptAlias /enmcgi /var/www/cgi-bin/enmcgi.py
+---
+>     ScriptAlias /cgi-bin/ "/var/www/cgi-bin/"
+
+  #<Directory "/var/www/cgi-bin">
+   <Directory "/usr/src/myapp/src/src/cgi-bin/">
+      Options +ExecCGI
+      AddHandler cgi-script .py 
+  
+  
+  Concerns for the Test Manager  
+CISCAT - Arun can't do password change 
+SIENM Jenkins jobs
+Forecast 2023 items
+OMBS Test Strategy 
+Firmware ownership - SIENM
+IPv6 infrastructure

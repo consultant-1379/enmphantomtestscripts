@@ -1,0 +1,6 @@
+# Exclude log files
+*.log
+logs/*
+Python*
+logger
+*tar

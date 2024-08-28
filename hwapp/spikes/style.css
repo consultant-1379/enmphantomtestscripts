@@ -1,0 +1,196 @@
+/* Global Styles */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+a {
+    color: #007acc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styles */
+
+header {
+    background-color: #005;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+nav ul {
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    display: block;
+    padding: 10px;
+}
+
+nav ul li:hover {
+    background-color: #ddd;
+}
+
+nav .logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+nav .menu-toggle {
+    display: none;
+}
+
+/* Sidebar Styles */
+
+aside {
+    background-color: #005;
+    padding: 15px;
+    width: 200px;
+    top: 110px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 20px;
+
+}
+
+aside h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #fff;
+
+}
+
+aside ul li {
+    margin-bottom: 5px;
+}
+
+/* Content Styles */
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.content {
+    flex-basis: 70%;
+    padding: 15px;
+}
+
+.content h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.content p {
+    margin-bottom: 20px;
+}
+
+/* CSS for dropdown menu */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  color: #fff;
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  background-color: #005;
+}
+
+.dropdown-content a:hover {
+  background-color: #444;
+}
+/* Media Queries */
+
+@media screen and (max-width: 800px) {
+    header {
+        flex-wrap: wrap;
+    }
+
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 55px;
+        left: 0;
+        width: 100%;
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+    }
+
+    nav .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 30px;
+        height: 30px;
+        background-color: #007acc;
+        cursor: pointer;
+    }
+
+    nav .menu-toggle:before {
+        content: "\2630";
+        font-size: 18px;
+        color: #fff;
+        line-height: 30px;
+        text-align: center;
+        display: block;
+    }
+
+    nav .menu-toggle.active:before {
+        content: "\2715";
+    }
+
+    main {
+        flex-direction: column;
+    }
+
+    .content {
+        flex-basis: 100%;
+    }
+}

@@ -1,0 +1,24 @@
+{# templates/ENMQueryForm.html #}
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ test_name }} {{ title }}</h1>    <form method=POST action="/fetch">
+        <p> Get ENM information</p>
+        <table>
+            <tr><th>ENM ID<td><input type="text" name="ENM"></td></th></tr>
+            <tr><th>ENM Version <td><input type=text name="ENM Version">
+            <tr><th>Redhat Version<td><input type=text name="Redhat Version">
+            <tr><th>Java Version - Host <td><input type=text name="Java Version - Host" checked>
+        </table>
+            <input type="checkbox" id="Redhat version" name="rhelcheckbox" value="RHEL" checked>
+            <label for="Redhat version"> Redhat version</label><br>
+            <input type="checkbox" id="ENM Version" name="enmversioncheckbox" value="ENMv8" checked>
+            <label for="ENM Version"> ENM Version</label><br>
+            <input type="checkbox" id="Java Version - Host" name="javaversioncheckbox" value="j8" checked>
+            <label for="Java Version - Host"> Java Version - Host</label>
+
+        <p></p>
+        <input type=submit value="Fetch", name=action>
+        <input type=submit value="Update", name=action>
+    </form>
+{% endblock content %}
